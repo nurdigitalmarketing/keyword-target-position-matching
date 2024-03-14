@@ -2,19 +2,19 @@ import streamlit as st
 import pandas as pd
 
 # Titolo dell'applicazione
-st.title('Keyword Target Position Matching')
+st.title('Keyword Search Streamlit Application')
 
 # Introduzione e descrizione dell'applicazione
 st.markdown("""
 ## 👉🏼 Description
-This Streamlit application is designed to facilitate the search for specific keywords within an Excel file, providing a simple yet powerful tool for analyzing and extracting data based on user-defined keywords. It allows users to upload an Excel file and enter a set of target keywords, then searches for these keywords within the file to display their occurrences, positions, and associated URLs if available. This tool is particularly useful for content managers, SEO specialists, and data analysts looking to quickly assess the presence and distribution of keywords across large datasets.
+This Streamlit application is designed to facilitate the search for specific keywords within an Excel file, providing a simple yet powerful tool for analyzing and extracting data based on user-defined keywords. It allows users to upload an Excel file and enter a set of target keywords, each on a new line, then searches for these keywords within the file to display their occurrences, positions, and associated URLs if available. This tool is particularly useful for content managers, SEO specialists, and data analysts looking to quickly assess the presence and distribution of keywords across large datasets.
 """)
 
-# Campo di testo per inserire le parole chiave target, separate da virgole
-keyword_input = st.text_area("Inserisci parole chiave target (separate da virgole):")
+# Campo di testo per inserire le parole chiave target, una per riga
+keyword_input = st.text_area("Inserisci parole chiave target (una per riga):")
 
 # Converti l'input dell'utente in una lista di parole chiave
-keywords = [keyword.strip() for keyword in keyword_input.split(',') if keyword]
+keywords = [keyword.strip() for keyword in keyword_input.split('\n') if keyword]
 
 # Widget di caricamento file
 uploaded_file = st.file_uploader("Carica il file Excel:", type=['xlsx'])
