@@ -2,7 +2,9 @@
 # Keyword Target Position Matching
 
 ## 👉🏼 Description
-This application looks for matches between target keywords and the current ranking list via Semrush.
+This application is designed to facilitate the identification of matches between a defined set of target keywords and a list of current placements extracted through Semrush. It works by analyzing an export file provided by Semrush, which details the current positions of several keywords on search engines. Users can enter a list of keywords of interest and upload the ranking file to quickly find out if and where these keywords appear in the ranking list.
+
+Translated with DeepL.com (free version)
 
 ## 👉🏼 Features
 - Interactive interface for uploading Excel files and entering target keywords.
