@@ -2,7 +2,7 @@
 # Keyword Target Position Matching
 
 ## 👉🏼 Description
-This Streamlit application is designed to facilitate the search for specific keywords within an Excel file, providing a simple yet powerful tool for analyzing and extracting data based on user-defined keywords. It allows users to upload an Excel file and enter a set of target keywords, then searches for these keywords within the file to display their occurrences, positions, and associated URLs if available. This tool is particularly useful for content managers, SEO specialists, and data analysts looking to quickly assess the presence and distribution of keywords across large datasets.
+This application looks for matches between target keywords and the current ranking list via Semrush.
 
 ## 👉🏼 Features
 - Interactive interface for uploading Excel files and entering target keywords.
