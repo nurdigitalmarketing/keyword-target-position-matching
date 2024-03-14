@@ -26,7 +26,7 @@ if uploaded_file is not None and keywords:
     if uploaded_file.name.endswith('.xlsx'):
         df = pd.read_excel(uploaded_file)
     elif uploaded_file.name.endswith('.csv'):
-        df = pd.read_csv(uploaded_file)
+        df = pd.read_csv(uploaded_file, encoding='utf-16le')
     else:
         st.write("Formato file non supportato.")
         st.stop()
