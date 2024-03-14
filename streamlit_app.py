@@ -7,7 +7,7 @@ st.title('Keyword Search Streamlit Application')
 # Introduzione e descrizione dell'applicazione
 st.markdown("""
 ## 👉🏼 Description
-This Streamlit application is designed to facilitate the search for specific keywords within an Excel file, providing a simple yet powerful tool for analyzing and extracting data based on user-defined keywords. It allows users to upload an Excel file and enter a set of target keywords, each on a new line, then searches for these keywords within the file to display their occurrences, positions, and associated URLs if available. This tool is particularly useful for content managers, SEO specialists, and data analysts looking to quickly assess the presence and distribution of keywords across large datasets.
+This Streamlit application is designed to facilitate the search for specific keywords within an Excel file, providing a simple yet powerful tool for analyzing and extracting data based on user-defined keywords.
 """)
 
 # Campo di testo per inserire le parole chiave target, una per riga
@@ -24,16 +24,19 @@ if uploaded_file is not None and keywords:
     df = pd.read_excel(uploaded_file)
 
     # Funzione per cercare le corrispondenze esatte delle parole chiave e ottenere posizioni e URL
+    # Assicurati che ogni parola chiave venga riportata una sola volta con la posizione più alta
     def search_keywords(df, keywords):
-        results = []
+        results = {}
         for keyword in keywords:
-            matched_rows = df[df['Keyword'].str.lower() == keyword.lower()]
+            matched_rows = df[df['Keyword'].str.lower() == keyword.lower()].sort_values(by='Position')
             if not matched_rows.empty:
-                for _, row in matched_rows.iterrows():
-                    results.append({"Keyword": keyword, "Position": row['Position'], "URL": row.get('URL', '-')})
+                # Prendi solo la prima riga (posizione più alta)
+                row = matched_rows.iloc[0]
+                results[keyword] = {"Keyword": keyword, "Position": row['Position'], "URL": row.get('URL', '-')}
             else:
-                results.append({"Keyword": keyword, "Position": "-", "URL": "-"})
-        return results
+                if keyword not in results:
+                    results[keyword] = {"Keyword": keyword, "Position": "-", "URL": "-"}
+        return list(results.values())
     
     # Esegui la ricerca delle parole chiave
     results = search_keywords(df, keywords)
