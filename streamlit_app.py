@@ -7,7 +7,7 @@ st.title('Keyword Search Streamlit Application')
 # Introduzione e descrizione dell'applicazione
 st.markdown("""
 ## 👉🏼 Description
-This Streamlit application is designed to facilitate the search for specific keywords within an Excel file, providing a simple yet powerful tool for analyzing and extracting data based on user-defined keywords.
+This application is designed to facilitate the identification of matches between a defined set of target keywords and a list of current placements extracted through Semrush. It works by analyzing an export file provided by Semrush, which details the current positions of several keywords on search engines. Users can enter a list of keywords of interest and upload the ranking file to quickly find out if and where these keywords appear in the ranking list.
 """)
 
 # Campo di testo per inserire le parole chiave target, una per riga
