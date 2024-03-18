@@ -7,7 +7,7 @@ st.title('Keyword Target Position Matching')
 # Introduzione e descrizione dell'applicazione
 st.markdown("""
 ## 👉🏼 Description
-This application is designed to facilitate the identification of matches between a defined set of target keywords and a list of current placements extracted through Semrush and Ahrefs. It works by analyzing an export file provided by these tools, which details the current positions of several keywords on search engines. Users can enter a list of keywords of interest and upload the ranking file to quickly find out if and where these keywords appear in the ranking list.
+Questa applicazione è stata progettata per facilitare l'identificazione delle corrispondenze tra un insieme definito di parole chiave target e un elenco di posizionamenti attuali estratti tramite Semrush e Ahrefs. Funziona analizzando un file di esportazione fornito da questi strumenti, che riporta in dettaglio le posizioni attuali di diverse parole chiave sui motori di ricerca. Gli utenti possono inserire un elenco di parole chiave di interesse e caricare il file di ranking per scoprire rapidamente se e dove queste parole chiave appaiono nella classifica.
 """)
 
 st.markdown("---")
