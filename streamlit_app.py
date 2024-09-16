@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from io import BytesIO
 
 # Titolo dell'applicazione
 st.title('Keyword Target Position Matching')
@@ -67,5 +68,22 @@ if uploaded_file and keywords:
         results_df = pd.DataFrame(results)
         st.write("Risultati della ricerca:")
         st.table(results_df)
+        
+        # Funzione per convertire il DataFrame in un file Excel
+        def to_excel(df):
+            output = BytesIO()
+            writer = pd.ExcelWriter(output, engine='xlsxwriter')
+            df.to_excel(writer, index=False, sheet_name='Risultati')
+            writer.save()
+            processed_data = output.getvalue()
+            return processed_data
+        
+        # Genera il file Excel e mostra il pulsante di download
+        excel_data = to_excel(results_df)
+        st.download_button(label='Scarica risultati in formato Excel',
+                           data=excel_data,
+                           file_name='risultati_keywords.xlsx',
+                           mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+
 else:
     st.write("Per favore, inserisci le parole chiave e carica un file per procedere.")
